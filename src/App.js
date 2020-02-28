@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
@@ -6,6 +7,9 @@ function App() {
       <header>
         <h1>Movies</h1>
       </header>
+      <main>
+        <SearchBar/>
+      </main>
     </div>
   );
 }
