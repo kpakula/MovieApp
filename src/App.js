@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import SearchBar from './components/SearchBar';
-import {apiUrl} from "./utils/Api"
+import React, { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import { apiUrl } from "./utils/Api";
 import axios from "axios";
-import { apiKey } from './utils/ApiKey';
 
 function App() {
   const [state, setState] = useState({
@@ -11,27 +10,26 @@ function App() {
     selected: {}
   });
 
-  const search = (e) => {
+  const search = e => {
     if (e.key === "Enter") {
-      axios(apiUrl + apiKey + "&s=" + state.search)
-      .then ((data) => {
-        console.log(data)
-      })
-    }
-  }
+      console.log(apiUrl + "&s=" + state.search);
 
-  const handleInput = (event) => {
+      axios(apiUrl + "&s=" + state.search).then(data => {
+        setState(prevState => {
+          return { ...prevState, results: data.data.Search };
+        });
+      });
+
+    }
+  };
+
+  const handleInput = event => {
     const currentSearch = event.target.value;
 
     setState(prevState => {
-      return {...prevState, search: currentSearch}
+      return { ...prevState, search: currentSearch };
     });
-
-    console.log(state.search);
-  }
-
-
-
+  };
 
   return (
     <div className="App">
@@ -39,7 +37,7 @@ function App() {
         <h1>Movies</h1>
       </header>
       <main>
-        <SearchBar handleInput={handleInput} search={search}/>
+        <SearchBar handleInput={handleInput} search={search} />
       </main>
     </div>
   );
