@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
+import Movies from "./components/Movies";
 import { apiUrl } from "./utils/Api";
 import axios from "axios";
+import Movie from "./components/Movie";
 
 function App() {
   const [state, setState] = useState({
@@ -38,6 +40,7 @@ function App() {
       </header>
       <main>
         <SearchBar handleInput={handleInput} search={search} />
+        <Movies movies={state.results}/>
       </main>
     </div>
   );
