@@ -8,6 +8,12 @@ function App() {
     selected: {}
   });
 
+  const search = (e) => {
+    if (e.key === "Enter") {
+      
+    }
+  }
+
   const handleInput = (event) => {
     const currentSearch = event.target.value;
 
@@ -15,7 +21,7 @@ function App() {
       return {...prevState, search: currentSearch}
     });
 
-    console.log(state.s);
+    console.log(state.search);
   }
 
 
@@ -27,8 +33,7 @@ function App() {
         <h1>Movies</h1>
       </header>
       <main>
-        {/* {apiUrl} */}
-        <SearchBar/>
+        <SearchBar handleInput={handleInput}/>
       </main>
     </div>
   );

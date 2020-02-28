@@ -1,9 +1,9 @@
 import React from 'react'
 
-function SearchBar() {
+function SearchBar({ handleInput }) {
     return (
         <section className="searchbar-wrap">
-            <input type="text" placeholder="Search for a movie" className="searchbar"/>
+            <input type="text" placeholder="Search for a movie" className="searchbar" onChange={handleInput}/>
 
         </section>
     )
