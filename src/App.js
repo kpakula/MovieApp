@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './components/SearchBar';
-
+import {apiUrl} from "./utils/Api"
 function App() {
   return (
     <div className="App">
@@ -8,6 +8,7 @@ function App() {
         <h1>Movies</h1>
       </header>
       <main>
+        {/* {apiUrl} */}
         <SearchBar/>
       </main>
     </div>
