@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import {apiUrl} from "./utils/Api"
+import axios from "axios";
+import { apiKey } from './utils/ApiKey';
+
 function App() {
   const [state, setState] = useState({
     search: "",
@@ -10,7 +13,10 @@ function App() {
 
   const search = (e) => {
     if (e.key === "Enter") {
-      
+      axios(apiUrl + apiKey + "&s=" + state.search)
+      .then ((data) => {
+        console.log(data)
+      })
     }
   }
 
@@ -33,7 +39,7 @@ function App() {
         <h1>Movies</h1>
       </header>
       <main>
-        <SearchBar handleInput={handleInput}/>
+        <SearchBar handleInput={handleInput} search={search}/>
       </main>
     </div>
   );
