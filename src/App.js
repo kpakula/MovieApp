@@ -17,20 +17,23 @@ function App() {
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
 
-
   const search = e => {
     if (e.key === "Enter") {
-      axios(apiUrl + "&s=" + state.search)
-        .then(data => {
-          setConnection(false);
+      const currentSearch = splitSearchCurrentState();
 
-          if (data.data.Search) {
-            setMovieNotExists(false)
+      axios(apiUrl + "&s=" + currentSearch)
+        .then(data => {
+          const movies = data.data.Search;
+
+          setConnection(false);
+          if (movies) {
+            setMovieNotExists(false);
+
             setState(prevState => {
-              return { ...prevState, results: data.data.Search };
+              return { ...prevState, results: movies };
             });
           } else {
-              setMovieNotExists(true)
+            setMovieNotExists(true);
           }
         })
         .catch(error => {
@@ -39,8 +42,16 @@ function App() {
     }
   };
 
+  function splitSearchCurrentState() {
+    return state.search.split(' ').join('+')
+  }
+
+
+
   const handleInput = event => {
     const currentSearch = event.target.value;
+
+
 
     setState(prevState => {
       return { ...prevState, search: currentSearch };
@@ -56,7 +67,7 @@ function App() {
         <SearchBar handleInput={handleInput} search={search} />
         <Movies movies={state.results} />
         {isConnection && <Connection />}
-        {isMovieNotExists && <Exist/>}
+        {isMovieNotExists && <Exist />}
       </main>
     </div>
   );
