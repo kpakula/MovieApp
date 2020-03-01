@@ -13,16 +13,22 @@ function App() {
     selected: {}
   });
 
+  const [isConnection, setConnection] = useState(false);
+
   const search = e => {
     if (e.key === "Enter") {
 
       axios(apiUrl + "&s=" + state.search)
         .then(data => {
+          setConnection(false)
+
           setState(prevState => {
             return { ...prevState, results: data.data.Search };
           });
         })
-        .catch(error => {});
+        .catch(error => {
+          setConnection(true)
+        });
     }
   };
 
@@ -42,7 +48,7 @@ function App() {
       <main>
         <SearchBar handleInput={handleInput} search={search} />
         <Movies movies={state.results} />
-        <Connection />
+        {isConnection && <Connection /> }
       </main>
     </div>
   );
