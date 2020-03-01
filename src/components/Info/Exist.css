@@ -1,0 +1,11 @@
+.connection-info {
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.connection-info-inner {
+    padding: 10px 10px 10px 10px;
+    color: rgb(157, 160, 168);
+}

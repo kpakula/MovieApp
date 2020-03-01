@@ -1,10 +1,11 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
-import Movies from './components/Movies';
-import SearchBar from './components/SearchBar';
-import { apiUrl } from './utils/Api';
-import Connection from './components/Connection';
+import Movies from "./components/Movies";
+import SearchBar from "./components/SearchBar";
+import { apiUrl } from "./utils/Api";
+import Connection from "./components/Info/Connection";
+import Exist from "./components/Info/Exist";
 
 function App() {
   const [state, setState] = useState({
@@ -14,20 +15,26 @@ function App() {
   });
 
   const [isConnection, setConnection] = useState(false);
+  const [isMovieNotExists, setMovieNotExists] = useState(false);
+
 
   const search = e => {
     if (e.key === "Enter") {
-
       axios(apiUrl + "&s=" + state.search)
         .then(data => {
-          setConnection(false)
+          setConnection(false);
 
-          setState(prevState => {
-            return { ...prevState, results: data.data.Search };
-          });
+          if (data.data.Search) {
+            setMovieNotExists(false)
+            setState(prevState => {
+              return { ...prevState, results: data.data.Search };
+            });
+          } else {
+              setMovieNotExists(true)
+          }
         })
         .catch(error => {
-          setConnection(true)
+          setConnection(true);
         });
     }
   };
@@ -48,7 +55,8 @@ function App() {
       <main>
         <SearchBar handleInput={handleInput} search={search} />
         <Movies movies={state.results} />
-        {isConnection && <Connection /> }
+        {isConnection && <Connection />}
+        {isMovieNotExists && <Exist/>}
       </main>
     </div>
   );

@@ -1,14 +1,12 @@
-import React from 'react'
-import Movie from './Movie'
+import React from "react";
+import Movie from "./Movie";
 
 function Movies({ movies }) {
-    return (
-        <section className="movies">
-            {movies.map(movie => (
-                <Movie movie={movie} />
-            ))}
-        </section>
-    )
+  return (
+    <section className="movies">
+      {!movies.length ? null : movies.map(movie => <Movie movie={movie} />)}
+    </section>
+  );
 }
 
-export default Movies
+export default Movies;
