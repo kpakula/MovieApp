@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import SearchBar from "./components/SearchBar";
-import Movies from "./components/Movies";
-import { apiUrl } from "./utils/Api";
-import axios from "axios";
-import Movie from "./components/Movie";
+import axios from 'axios';
+import React, { useState } from 'react';
+
+import Movies from './components/Movies';
+import SearchBar from './components/SearchBar';
+import { apiUrl } from './utils/Api';
+import Connection from './components/Connection';
 
 function App() {
   const [state, setState] = useState({
@@ -14,14 +15,14 @@ function App() {
 
   const search = e => {
     if (e.key === "Enter") {
-      console.log(apiUrl + "&s=" + state.search);
 
-      axios(apiUrl + "&s=" + state.search).then(data => {
-        setState(prevState => {
-          return { ...prevState, results: data.data.Search };
-        });
-      });
-
+      axios(apiUrl + "&s=" + state.search)
+        .then(data => {
+          setState(prevState => {
+            return { ...prevState, results: data.data.Search };
+          });
+        })
+        .catch(error => {});
     }
   };
 
@@ -40,7 +41,8 @@ function App() {
       </header>
       <main>
         <SearchBar handleInput={handleInput} search={search} />
-        <Movies movies={state.results}/>
+        <Movies movies={state.results} />
+        <Connection />
       </main>
     </div>
   );
