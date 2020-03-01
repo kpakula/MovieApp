@@ -1,3 +1,1 @@
-import {apiKey} from "./ApiKey"
-
-export const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}`;
+export const apiUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
