@@ -103,10 +103,6 @@ function App() {
         {isMovieNotExists && <Exist />}
 
         {(typeof state.selected.Title != "undefined") ? <Popup current={state.selected} close={closePopup} /> : null}
-        {/* <Loading
-          status={loadingStatus}
-          movies={state.results}
-        /> */}
 
       </main>
     </div>

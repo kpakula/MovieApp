@@ -6,7 +6,7 @@ function Connection() {
   return (
     <div className="connection-info">
       <div className="connection-info-inner">
-        <h2>Something goes wrong... :(</h2>
+        <h2>You have connection problem... :(</h2>
       </div>
     </div>
   );
