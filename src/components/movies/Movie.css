@@ -15,10 +15,26 @@
     }
 }
 
-@media only screen and (max-width: 767px) {
-    .movie img {
-        width: 100%;
+
+@media only screen and (min-width: 600px) {
+    .movie  {
+        width: 50%;
         min-height: 325px;
+    }
+
+}
+
+@media only screen and (max-width: 599px) {
+    .movie  {
+        width: 100%;
+        max-width: 375px;
+        margin-bottom: 10px;
+        /* height: 50%; */
+        /* max-height: 300px; */
+    }
+    .movie img {
+        height: 50%;
+
     }
 }
 
