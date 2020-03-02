@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-import Movies from "./components/Movies";
+import Movies from "./components/movies/Movies";
 import SearchBar from "./components/SearchBar";
 import { apiUrl } from "./utils/Api";
 import Connection from "./components/Info/Connection";
