@@ -3,7 +3,6 @@ import React from 'react'
 import "./Popup.css"
 
 function Popup( { current, close }) {
-    // console.log(current);
     return (
         <section className="popup">
             <div className="content">
@@ -13,7 +12,7 @@ function Popup( { current, close }) {
                 <img src={current.Poster}/>
                 <p>{current.Plot}</p>
             </div>
-            <button className="close" type="text" onClick={close}>...</button>
+            <button className="close" type="text" onClick={close}>X</button>
             </div>
         </section>
     )

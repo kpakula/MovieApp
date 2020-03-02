@@ -3,11 +3,11 @@
     top: 0;
     left: 0;
     width: 50vh;
-    height: 100vh;
+    height: 100%;
 
     background-color: #445565;
     transition: 0.4s ease-out;
-    /* overflow: scroll; */
+    overflow-y: auto;
 }
 
 .popup .content {
@@ -22,6 +22,7 @@
 .popup .content h3 {
     font-size: 28px;
     font-weight: 600;
+    margin-top: 10px;
 }
 
 .popup .content span {
@@ -52,16 +53,16 @@
 
 .popup .content .close {
     display: inline-block;
-    top: 20px;
+    top: 10px;
     position: absolute;
-    right: 20px;
+    right: 12px;
 
 
-    padding: 15px 30px;
+    padding: 7px 18px;
     font-size: 18px;
     font-weight: 500;
 
-    background: #535353;
+    background: #8b2626;
     color: #EEE;
     border-radius: 5px;
 
@@ -70,12 +71,12 @@
     appearance: none;
     cursor: pointer;
 
-    transition: 2s ease-out;
+    transition: .3s ease-out;
 }
 
 
 .popup .content .close:hover {
-    background: #223343;
+    background: #6a0404;
 }
 
 .popup .content .close:active + .popup{
