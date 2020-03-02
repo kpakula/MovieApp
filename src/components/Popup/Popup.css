@@ -8,7 +8,16 @@
     background-color: #445565;
     transition: 0.4s ease-out;
     overflow-y: auto;
+    transition: width 2s;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .popup {
+        width: 100%;
+    }
+}
+
 
 .popup .content {
     display: block;
@@ -79,6 +88,3 @@
     background: #6a0404;
 }
 
-.popup .content .close:active + .popup{
-    left: 100%;
-}

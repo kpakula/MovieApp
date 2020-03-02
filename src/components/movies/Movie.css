@@ -5,7 +5,23 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
+    margin: auto;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .movie {
+        width: 50%;
+        max-width: 350px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .movie img {
+        width: 100%;
+        min-height: 325px;
+    }
+}
+
 
 .movie img {
     display: block;
@@ -20,6 +36,7 @@
     background: #334454;
     flex: 1 1 100%;
     cursor: pointer;
+    text-align: center;
 }
 
 .movie:hover h3 {
@@ -27,3 +44,7 @@
     color: #192531;
     font-weight: 500;
 }
+
+
+
+

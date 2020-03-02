@@ -40,12 +40,12 @@ function App() {
               });
             } else {
               setMovieNotExists(true);
-              setTimeout(() => setMovieNotExists(false), 5000);
+              setTimeout(() => setMovieNotExists(false), 3500);
             }
           })
           .catch(error => {
             setConnection(true);
-            setTimeout(() => setConnection(false), 5000);
+            setTimeout(() => setConnection(false), 3500);
           })
           .then(() => {
             setLoadingStatus(true);
@@ -73,6 +73,7 @@ function App() {
   };
 
   const openPopup = (id) => {
+
     axios.get(apiUrl + "&i=" + id)
     .then(({ data }) => {
       let current = data;

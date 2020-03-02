@@ -1,0 +1,27 @@
+.searchbar-wrap {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    background: none;
+  
+    background-color: #eee;
+    border-radius: 10px;
+  
+    color: #53565A;
+    font-size: 20px;
+    font-weight: 300;
+  
+    transition: 0.4s ease-out;
+  }
+  
+  .searchbar:focus {
+    box-shadow: 0px 0px 10px 4px #4484C5;
+  }

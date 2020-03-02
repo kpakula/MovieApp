@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./SearchBar.css"
 function SearchBar({ handleInput, search }) {
     return (
         <section className="searchbar-wrap">

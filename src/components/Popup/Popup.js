@@ -4,7 +4,7 @@ import "./Popup.css"
 
 function Popup( { current, close }) {
     return (
-        <section className="popup">
+        <section className="popup" id="popup">
             <div className="content">
             <h3>{current.Title}</h3> <span>{current.Year}</span>
             <p className="rating">Rating: {current.imdbRating}</p>
