@@ -6,7 +6,7 @@ function Exist() {
   return (
     <div className="connection-info">
       <div className="connection-info-inner">
-        <h2>This movie not exists in database :(</h2>
+        <h2>This movie not exists :(</h2>
       </div>
     </div>
   );

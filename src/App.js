@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import { apiUrl } from "./utils/Api";
 import Connection from "./components/Info/Connection";
 import Exist from "./components/Info/Exist";
+import Loading from "./components/loading/Loading";
 
 function App() {
   const [state, setState] = useState({
@@ -16,42 +17,54 @@ function App() {
 
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState(false);
 
   const search = e => {
     if (e.key === "Enter") {
+      flushMovies();
+      setLoadingStatus(true);
       const currentSearch = splitSearchCurrentState();
 
-      axios(apiUrl + "&s=" + currentSearch)
-        .then(data => {
-          const movies = data.data.Search;
+      setTimeout(() => {
+        axios(apiUrl + "&s=" + currentSearch)
+          .then(data => {
+            const movies = data.data.Search;
 
-          setConnection(false);
-          if (movies) {
-            setMovieNotExists(false);
+            setConnection(false);
+            if (movies) {
+              setMovieNotExists(false);
 
-            setState(prevState => {
-              return { ...prevState, results: movies };
-            });
-          } else {
-            setMovieNotExists(true);
-          }
-        })
-        .catch(error => {
-          setConnection(true);
-        });
+              setState(prevState => {
+                return { ...prevState, results: movies };
+              });
+            } else {
+              setMovieNotExists(true);
+              setTimeout(() => setMovieNotExists(false), 5000);
+            }
+          })
+          .catch(error => {
+            setConnection(true);
+            setTimeout(() => setConnection(false), 5000);
+          })
+          .then(() => {
+            setLoadingStatus(true);
+          });
+      }, 1200);
     }
   };
 
   function splitSearchCurrentState() {
-    return state.search.split(' ').join('+')
+    return state.search.split(" ").join("+");
   }
 
-
+  function flushMovies() {
+    setState(prevState => {
+      return { ...prevState, results: [] };
+    });
+  }
 
   const handleInput = event => {
     const currentSearch = event.target.value;
-
-
 
     setState(prevState => {
       return { ...prevState, search: currentSearch };
@@ -66,8 +79,9 @@ function App() {
       <main>
         <SearchBar handleInput={handleInput} search={search} />
         <Movies movies={state.results} />
-        {isConnection && <Connection />}
-        {isMovieNotExists && <Exist />}
+        {/* {isConnection && <Connection />}
+        {isMovieNotExists && <Exist />} */}
+        <Loading status={loadingStatus} />
       </main>
     </div>
   );
