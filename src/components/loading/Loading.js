@@ -2,19 +2,18 @@ import React, { useState } from 'react'
 import FadeIn from 'react-fade-in';
 import Lottie from 'react-lottie';
 import ReactLoading from 'react-loading';
-// import "bootstrap/dist/css/bootstrap.css";
+import Movies from '../Movies';
 
 
-function Loading({ status }) {
-    // const [loading, setLoading] = useState(undefined)
+function Loading({ status, movies }) {
+
     return (
         <div>
-            {status ? (
+            {!status ? (
                 <ReactLoading type={"bars"} color={"white"} />
             ): (
-                null
+                <Movies movies={movies} />
             )}
-            {/* <h1>Hello World</h1> */}
         </div>
     )
 }

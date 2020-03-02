@@ -17,7 +17,7 @@ function App() {
 
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
-  const [loadingStatus, setLoadingStatus] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState(undefined);
 
   const search = e => {
     if (e.key === "Enter") {
@@ -79,9 +79,12 @@ function App() {
       <main>
         <SearchBar handleInput={handleInput} search={search} />
         <Movies movies={state.results} />
-        {/* {isConnection && <Connection />}
-        {isMovieNotExists && <Exist />} */}
-        <Loading status={loadingStatus} />
+        {isConnection && <Connection />}
+        {isMovieNotExists && <Exist />}
+        {/* <Loading
+          status={loadingStatus}
+          movies={state.results}
+        /> */}
       </main>
     </div>
   );
