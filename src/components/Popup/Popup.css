@@ -1,0 +1,83 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vh;
+    height: 100vh;
+
+    background-color: #445565;
+    transition: 0.4s ease-out;
+    /* overflow: scroll; */
+}
+
+.popup .content {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 0;
+    padding: 25px;
+    color: #EEE;
+}
+
+.popup .content h3 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.popup .content span {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.popup .content .rating {
+    margin-bottom: 30px;
+}
+
+.popup .content .plot {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -15px 30px;
+}
+
+.popup .content .plot img {
+    flex: 1 1 50%;
+    max-width: 300px;
+    padding: 0px 15px;
+}
+
+.popup .content .plot p {
+    flex: 1 1 50%;
+    padding: 15px;
+}
+
+.popup .content .close {
+    display: inline-block;
+    top: 20px;
+    position: absolute;
+    right: 20px;
+
+
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 500;
+
+    background: #535353;
+    color: #EEE;
+    border-radius: 5px;
+
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+
+    transition: 2s ease-out;
+}
+
+
+.popup .content .close:hover {
+    background: #223343;
+}
+
+.popup .content .close:active + .popup{
+    left: 100%;
+}

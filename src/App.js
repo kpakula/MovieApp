@@ -7,6 +7,7 @@ import { apiUrl } from "./utils/Api";
 import Connection from "./components/Info/Connection";
 import Exist from "./components/Info/Exist";
 import Loading from "./components/loading/Loading";
+import Popup from "./components/Popup/Popup";
 
 function App() {
   const [state, setState] = useState({
@@ -71,6 +72,25 @@ function App() {
     });
   };
 
+  const openPopup = (id) => {
+    axios.get(apiUrl + "&i=" + id)
+    .then(({ data }) => {
+      let current = data;
+      console.log(current)
+
+      setState(prevState => {
+        return {...prevState, selected: current}
+      });
+    });
+  }
+
+  const closePopup = () => {
+    setState(prevState => {
+      return {...prevState, selected: {}}
+    });
+  }
+
+
   return (
     <div className="App">
       <header>
@@ -78,13 +98,16 @@ function App() {
       </header>
       <main>
         <SearchBar handleInput={handleInput} search={search} />
-        <Movies movies={state.results} />
+        <Movies movies={state.results} openPopup={openPopup}/>
         {isConnection && <Connection />}
         {isMovieNotExists && <Exist />}
+
+        {(typeof state.selected.Title != "undefined") ? <Popup current={state.selected} close={closePopup} /> : null}
         {/* <Loading
           status={loadingStatus}
           movies={state.results}
         /> */}
+
       </main>
     </div>
   );
