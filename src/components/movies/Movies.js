@@ -5,7 +5,7 @@ import "./Movies.css";
 function Movies({ movies, openPopup }) {
   return (
       <div className="container-fluid text-center movies">
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
           {!movies.length
             ? null
             : movies.map(movie => (

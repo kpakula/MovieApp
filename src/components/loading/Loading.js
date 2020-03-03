@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import FadeIn from 'react-fade-in';
-import Lottie from 'react-lottie';
+import React from 'react';
 import ReactLoading from 'react-loading';
+
 import Movies from '../movies/Movies';
 
 

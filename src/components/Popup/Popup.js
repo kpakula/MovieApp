@@ -9,7 +9,7 @@ function Popup( { current, close }) {
             <h3>{current.Title}</h3> <span>{current.Year}</span>
             <p className="rating">Rating: {current.imdbRating}</p>
             <div className="plot">
-                <img src={current.Poster}/>
+                <img src={current.Poster} alt={current.Title + ' image'}/>
                 <p>{current.Plot}</p>
             </div>
             <button className="close" type="text" onClick={close}>X</button>

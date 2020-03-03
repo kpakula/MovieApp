@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar";
 import { apiUrl } from "./utils/Api";
 import Connection from "./components/Info/Connection";
 import Exist from "./components/Info/Exist";
-import Loading from "./components/loading/Loading";
+// import Loading from "./components/loading/Loading";
 import Popup from "./components/Popup/Popup";
 
 function App() {
@@ -18,12 +18,12 @@ function App() {
 
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
-  const [loadingStatus, setLoadingStatus] = useState(undefined);
+  // const [loadingStatus, setLoadingStatus] = useState(undefined);
 
   const search = e => {
     if (e.key === "Enter") {
       flushMovies();
-      setLoadingStatus(true);
+      // setLoadingStatus(true);
       const currentSearch = splitSearchCurrentState();
 
       setTimeout(() => {
@@ -48,7 +48,7 @@ function App() {
             setTimeout(() => setConnection(false), 3500);
           })
           .then(() => {
-            setLoadingStatus(true);
+            // setLoadingStatus(true);
           });
       }, 1200);
     }
