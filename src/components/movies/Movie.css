@@ -16,7 +16,7 @@
 }
 
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 650px) and (max-width: 767px) {
     .movie  {
         width: 50%;
         min-height: 325px;
@@ -24,7 +24,7 @@
 
 }
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 649px) {
     .movie  {
         width: 100%;
         max-width: 375px;
