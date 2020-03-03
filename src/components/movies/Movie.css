@@ -1,4 +1,4 @@
-.movie {
+/* .movie {
     width: 33.33%;
     min-width: 250px;
     max-height: 514px;
@@ -6,9 +6,9 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-}
+} */
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
+/* @media only screen and (min-width: 768px) and (max-width: 992px) {
     .movie {
         width: 50%;
         max-width: 350px;
@@ -31,10 +31,10 @@
         margin-bottom: 10px;
     }
 
-}
+} */
 
 
-.movie img {
+/* .movie img {
     display: block;
     width: 100%;
     height: 450px;
@@ -55,7 +55,7 @@
     background-color: #dceedd;
     color: #192531;
     font-weight: 500;
-}
+} */
 
 
 
