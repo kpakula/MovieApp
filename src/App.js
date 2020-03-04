@@ -7,7 +7,7 @@ import { apiUrl } from "./utils/Api";
 import Connection from "./components/Info/Connection";
 import Exist from "./components/Info/Exist";
 import Popup from "./components/Popup/Popup";
-import MovieIcon from '@material-ui/icons/Movie';
+import MovieIcon from "@material-ui/icons/Movie";
 
 function App() {
   const [state, setState] = useState({
@@ -18,54 +18,30 @@ function App() {
 
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
-  // const [loadingStatus, setLoadingStatus] = useState(undefined);
+
   const TITLE = "Movies";
 
   const search = e => {
     if (e.key === "Enter") {
       flushMovies();
-      // setLoadingStatus(true);
-      const currentSearch = splitSearchCurrentState();
-
+      const currentSearch = changeSpaceBySignPlus();
       setTimeout(() => {
-        axios(apiUrl + "&s=" + currentSearch)
-          .then(data => {
-            const movies = data.data.Search;
-
-            setConnection(false);
-            if (movies) {
-              setMovieNotExists(false);
-
-              setState(prevState => {
-                return { ...prevState, results: movies };
-              });
-            } else {
-              setMovieNotExists(true);
-              setTimeout(() => setMovieNotExists(false), 3500);
-            }
-          })
-          .catch(error => {
-            setConnection(true);
-            setTimeout(() => setConnection(false), 3500);
-          })
-          .then(() => {
-            // setLoadingStatus(true);
-          });
+        getMoviesRequest(currentSearch);
       }, 1200);
     }
   };
 
-  function splitSearchCurrentState() {
+  const changeSpaceBySignPlus = () => {
     return state.search.split(" ").join("+");
-  }
+  };
 
-  function flushMovies() {
+  const flushMovies = () => {
     setState(prevState => {
       return { ...prevState, results: [] };
     });
-  }
+  };
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     const currentSearch = event.target.value;
 
     setState(prevState => {
@@ -73,42 +49,73 @@ function App() {
     });
   };
 
-  const openPopup = (id) => {
-
-    axios.get(apiUrl + "&i=" + id)
-    .then(({ data }) => {
+  const openPopup = id => {
+    axios.get(apiUrl + "&i=" + id).then(({ data }) => {
       let current = data;
-      console.log(current)
+      console.log(current);
 
       setState(prevState => {
-        return {...prevState, selected: current}
+        return { ...prevState, selected: current };
       });
     });
-  }
+  };
 
   const closePopup = () => {
     setState(prevState => {
-      return {...prevState, selected: {}}
+      return { ...prevState, selected: {} };
     });
-  }
-
+  };
 
   return (
     <div className="App">
       <header>
-        <h1><MovieIcon fontSize="large" color="primary"/> {TITLE} <MovieIcon fontSize="large" color="primary"/></h1>
+        <h1>
+          <MovieIcon fontSize="large" color="primary" /> {TITLE}{" "}
+          <MovieIcon fontSize="large" color="primary" />
+        </h1>
       </header>
       <main>
         <SearchBar handleInput={handleInput} search={search} />
-        <Movies movies={state.results} openPopup={openPopup}/>
+
+        <Movies movies={state.results} openPopup={openPopup} />
+
+        {/* If problem with connection*/}
         {isConnection && <Connection />}
         {isMovieNotExists && <Exist />}
 
-        {(typeof state.selected.Title != "undefined") ? <Popup current={state.selected} close={closePopup} /> : null}
-
+        {/* Popup on click the movie */}
+        {typeof state.selected.Title != "undefined" ? (
+          <Popup current={state.selected} close={closePopup} />
+        ) : null}
       </main>
     </div>
   );
+
+  function getMoviesRequest(currentSearch) {
+    axios(apiUrl + "&s=" + currentSearch)
+      .then(data => {
+        const movies = data.data.Search;
+        setConnection(false);
+        checkMoviesExist(movies);
+      })
+      .catch(error => {
+        setConnection(true);
+        console.error(error);
+        setTimeout(() => setConnection(false), 3500);
+      });
+  }
+
+  function checkMoviesExist(movies) {
+    if (movies) {
+      setMovieNotExists(false);
+      setState(prevState => {
+        return { ...prevState, results: movies };
+      });
+    } else {
+      setMovieNotExists(true);
+      setTimeout(() => setMovieNotExists(false), 3500);
+    }
+  }
 }
 
 export default App;
