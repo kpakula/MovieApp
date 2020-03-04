@@ -19,6 +19,7 @@ function App() {
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
   // const [loadingStatus, setLoadingStatus] = useState(undefined);
+  const TITLE = "Movies";
 
   const search = e => {
     if (e.key === "Enter") {
@@ -95,8 +96,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Movies</h1>
-        
+        <h1><MovieIcon fontSize="large" color="primary"/> {TITLE} <MovieIcon fontSize="large" color="primary"/></h1>
       </header>
       <main>
         <SearchBar handleInput={handleInput} search={search} />
