@@ -64,6 +64,10 @@ function App() {
     });
   };
 
+  const reloadPage = () => {
+    window.location.reload();
+  }
+
   const closePopup = () => {
     setState(prevState => {
       return { ...prevState, selected: {} };
@@ -73,7 +77,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>
+        <h1 onClick={reloadPage}>
           <MovieIcon fontSize="large" color="primary" /> {TITLE}{" "}
           <MovieIcon fontSize="large" color="primary" />
         </h1>
@@ -96,6 +100,7 @@ function App() {
       </main>
     </div>
   );
+
 
   function getMoviesRequest(currentSearch) {
     axios(apiUrl + "&s=" + currentSearch)
