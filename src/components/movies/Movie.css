@@ -10,7 +10,10 @@
     margin-bottom: 25px;
     border: none;
 
-    border: 1px solid white;
+    /* border: 1px solid white; */
+    /* outline: 1px solid white; */
+    box-shadow: 0 0 3px 2px white;
+
     padding: 0;
 }
 
