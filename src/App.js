@@ -6,8 +6,8 @@ import SearchBar from "./components/SearchBar";
 import { apiUrl } from "./utils/Api";
 import Connection from "./components/Info/Connection";
 import Exist from "./components/Info/Exist";
-// import Loading from "./components/loading/Loading";
 import Popup from "./components/Popup/Popup";
+import MovieIcon from '@material-ui/icons/Movie';
 
 function App() {
   const [state, setState] = useState({
@@ -96,6 +96,7 @@ function App() {
     <div className="App">
       <header>
         <h1>Movies</h1>
+        
       </header>
       <main>
         <SearchBar handleInput={handleInput} search={search} />
