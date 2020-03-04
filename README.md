@@ -3,11 +3,31 @@
 
  It's a simple movie app, where you can find the movies. With the given movie name, the application refers to MovieAPI.
 
- # Used technologies
- * React
 
 
-### Available Scripts
+## How to run
+
+```bash
+# Install essentials dependencies
+npm install
+
+# Start application
+npm start
+
+# Start application on specific port
+npm start --port 8000
+
+```
 
 
-### `npm start`
+
+
+ ## Used technologies
+ * React.js
+ * Bootstrap
+
+ ## Used API
+ http://www.omdbapi.com/
+
+
+
