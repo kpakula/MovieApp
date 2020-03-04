@@ -8,6 +8,8 @@ import Connection from "./components/Info/Connection";
 import Exist from "./components/Info/Exist";
 import Popup from "./components/Popup/Popup";
 import MovieIcon from "@material-ui/icons/Movie";
+import LoadingScreen from "./components/loading/LoadingScreen";
+// import Loading from "react-loading";
 
 function App() {
   const [state, setState] = useState({
@@ -18,12 +20,14 @@ function App() {
 
   const [isConnection, setConnection] = useState(false);
   const [isMovieNotExists, setMovieNotExists] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const TITLE = "Movies";
 
   const search = e => {
     if (e.key === "Enter") {
       flushMovies();
+      setLoading(true)
       const currentSearch = changeSpaceBySignPlus();
       setTimeout(() => {
         getMoviesRequest(currentSearch);
@@ -77,6 +81,8 @@ function App() {
       <main>
         <SearchBar handleInput={handleInput} search={search} />
 
+        {/* Loading screen */}
+        {isLoading && <LoadingScreen/>}
         <Movies movies={state.results} openPopup={openPopup} />
 
         {/* If problem with connection*/}
@@ -99,6 +105,7 @@ function App() {
         checkMoviesExist(movies);
       })
       .catch(error => {
+        setLoading(false)
         setConnection(true);
         console.error(error);
         setTimeout(() => setConnection(false), 3500);
@@ -108,10 +115,12 @@ function App() {
   function checkMoviesExist(movies) {
     if (movies) {
       setMovieNotExists(false);
+      setLoading(false);
       setState(prevState => {
         return { ...prevState, results: movies };
       });
     } else {
+      setLoading(false);
       setMovieNotExists(true);
       setTimeout(() => setMovieNotExists(false), 3500);
     }
