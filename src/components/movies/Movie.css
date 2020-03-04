@@ -8,6 +8,10 @@
     min-width: 270px;
 
     margin-bottom: 25px;
+    border: none;
+
+    border: 1px solid white;
+    padding: 0;
 }
 
 

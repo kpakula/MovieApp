@@ -7,6 +7,16 @@ function Movie({ movie, openPopup }) {
     else return title;
   };
 
+  const checkImageIsExist = (poster) => {
+    if(poster === "N/A") {
+      return defaultImage
+    } else {
+      return poster
+    }
+  }
+
+  const defaultImage = "https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
+
   return (
     <div
       className="col-12 col-sm-6 col-lg-4"
@@ -15,7 +25,7 @@ function Movie({ movie, openPopup }) {
       <div class="card">
         <img
           class="card-img-top"
-          src={movie.Poster}
+          src={checkImageIsExist(movie.Poster)}
           alt={movie.Title + " cover image"}
         />
         <div class="card-body">
