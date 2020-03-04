@@ -3,62 +3,57 @@
 .card {
     margin-left: auto;
     margin-right: auto;
-
-    /* max-height: 90%; */
     max-height: 590px;
-    max-width: 300px;
+    max-width: 310px;
     min-width: 270px;
 
     margin-bottom: 25px;
 }
+
 
 .card-img-top {
     width: 100%;
     max-height: 360px;
 }
 
-.card-text {
-    /* white-space: nowrap; */
-}
+.card-body {
+    height: 50px;
+    min-height: 30px;
+    margin: auto;
+    padding: 0;
+    width: 100%;
 
-
-/* .movie {
-     width: 100% !important;
-     height: 100% !important;
-    outline: 1px solid black;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.movie:hover {
-    background-color: #dceedd;
-    color: #192531;
-    font-weight: 500; 
-}
-
-.movie-data {
-
-}
-
-.movie img {
-
-}
-
-.movie h3 {
     color: #ffffff;
     font-size: 20px;
     font-weight: 500;
     background: #334454;
     cursor: pointer;
     text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body:hover {
+    background-color: #dceedd;
+    color: #192531;
+    font-weight: 500;
+}
+
+.card-title {
+    margin-bottom: 0 ;
 }
 
 
 
-.movie:hover h3 {
-    background-color: #dceedd;
-    color: #192531;
-    font-weight: 500;
 
+
+/* .movie h3 {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    background: #334454;
+    cursor: pointer;
+    text-align: center;
 } */
